@@ -74,39 +74,39 @@ def my_custom_decorator3(**params):
         # pass  # Define any common modifications to the class here
 
         # Iterate over the attributes of the class
-        # for name, value in cls.__dict__.items():
-        #     # Check if the attribute is a callable (method)
-        #     if callable(value) and name.startswith('test_'):
-        #         # Apply the decorator to each test method
-        #         setattr(ModifiedTestClass, name,
-        #                 apply_decorators(my_custom_method_decorator(**params))(value),
-        #                 # apply_decorators(decorate_method3(**params))(value)
-        #                 # decorate_method3(value, **params)
-        #                 )
+        for name, value in cls.__dict__.items():
+            # Check if the attribute is a callable (method)
+            if callable(value) and name.startswith('test_'):
+                # Apply the decorator to each test method
+                setattr(ModifiedTestClass, name,
+                        apply_decorators(my_custom_method_decorator(**params))(value),
+                        # apply_decorators(decorate_method3(**params))(value)
+                        # decorate_method3(value, **params)
+                        )
 
-        return ModifiedTestClass
+    #     return ModifiedTestClass
+    #
+    return decorator
+
+
+def my_custom_method_decorator(**params):
+    def decorator(original_method):
+        # Define any modifications to the method here
+        def wrapper(*args, **kwargs):
+            # print(f"Decorator before calling method {original_method.__name__} with params: {param1}, {param2}")
+            result = original_method(*args, **kwargs)
+            return result
+
+        return wrapper
 
     return decorator
 
 
-# def my_custom_method_decorator(**params):
-#     def decorator(original_method):
-#         # Define any modifications to the method here
-#         def wrapper(*args, **kwargs):
-#             # print(f"Decorator before calling method {original_method.__name__} with params: {param1}, {param2}")
-#             result = original_method(*args, **kwargs)
-#             return result
-#
-#         return wrapper
-#
-#     return decorator
+def apply_decorators(*decorators):
+    def decorator(original_method):
+        for dec in decorators:
+            original_method = dec(original_method)
+        return original_method
 
-
-# def apply_decorators(*decorators):
-#     def decorator(original_method):
-#         for dec in decorators:
-#             original_method = dec(original_method)
-#         return original_method
-#
-#     return decorator
+    return decorator
 

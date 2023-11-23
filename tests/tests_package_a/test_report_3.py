@@ -3,8 +3,8 @@
 Pr test module for pull request testing purposes.
 
 """
-import allure
-import pytest
+
+
 from src.report2 import allure_hook
 from src.report5 import my_custom_decorator3
 
@@ -30,6 +30,5 @@ class TestReport3:
     def test_report3_3(self):
         assert True
 
-    def test_change_owner(self):
-        allure.dynamic.label("owner", "Ayman.E")
-        assert True
+    def test_change_owner(self, customer):
+        assert customer == "customer"
