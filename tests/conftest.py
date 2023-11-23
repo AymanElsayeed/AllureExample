@@ -12,15 +12,7 @@ def customer_fixture():
     return "customer"
 
 
-# def pytest_configure(config):
-#     # register an additional marker
-#     config.addinivalue_line(
-#         "markers", "allure(owner): mark test to run only on named environment"
-#     )
-
-
 def pytest_runtest_setup(item):
-    # kwargs = [mark.kwargs for mark in item.iter_markers(name="allure")]
     for mark in item.iter_markers(name="allure"):
         kwargs = mark.kwargs
         if kwargs:
@@ -48,14 +40,7 @@ def pytest_runtest_setup(item):
                 allure.dynamic.feature(feature)
 
     # remove allure marker form item
-    print(f"\n item dir: {dir(item)}", file=sys.stderr)
-    print(f"\n item type: {type(item)}", file=sys.stderr)
     # pdb.set_trace()
-
-    print(f"\n item.keywords type: {type(item.keywords)}", file=sys.stderr)
-    print(f"\n item.keywords dir: {dir(item.keywords)}", file=sys.stderr)
-    print(f"\n item.keywords: {[type(k) for k in item.keywords.items()]}", file=sys.stderr)
-    print(f"\n item.keywords: {[(k,item.keywords[k]) for k in item.keywords.keys()]}", file=sys.stderr)
     _ = [mark.kwargs.pop("owner", None) for mark in item.iter_markers(name='allure')]
     _ = [mark.kwargs.pop("severity", None) for mark in item.iter_markers(name='allure')]
     _ = [mark.kwargs.pop("allure", None) for mark in item.iter_markers(name='allure')]
