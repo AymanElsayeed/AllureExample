@@ -15,6 +15,7 @@ def allure_wrapper(**params):
     title = params.get("title")
     story = params.get("story")
     feature = params.get("feature")
+    description = params.get("description")
 
     if owner:
         allure.dynamic.label("owner", owner)
@@ -28,3 +29,5 @@ def allure_wrapper(**params):
         allure.dynamic.story(story)
     if feature:
         allure.dynamic.feature(feature)
+    if description:
+        allure.dynamic.description(description)
