@@ -1,4 +1,3 @@
-
 import pandas as pd
 import pytest
 import allure
@@ -13,8 +12,21 @@ class TestAttach:
         assert True
 
     def test_attach_html_table(self):
-        allure.dynamic.story("Attach html table")
-        allure.dynamic.title("Attach html table")
+        allure.dynamic.story("Reports")
+        allure.dynamic.title("Files Execution Time")
         df = pd.DataFrame({"file name": ['file one', 'file two'], "time": [3, 4]})
         allure.attach(df.to_html(index=False), name="Attach html table", attachment_type=allure.attachment_type.HTML)
+        assert True
+
+    def test_attach_data_frame(self):
+        allure.dynamic.story("Reports")
+        allure.dynamic.title("Files info")
+        df = pd.DataFrame({"file name": ['file one', 'file two'], "size": [3, 4]})
+        allure.attach(df.to_csv(index=False), name="Attach data frame", attachment_type=allure.attachment_type.CSV)
+        assert True
+
+    def test_attach_text(self):
+        allure.dynamic.story("Reports")
+        allure.dynamic.title("Attach text")
+        allure.attach("Attach text", name="Attach text", attachment_type=allure.attachment_type.TEXT)
         assert True
