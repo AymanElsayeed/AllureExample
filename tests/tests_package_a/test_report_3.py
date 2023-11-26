@@ -4,14 +4,15 @@ Pr test module for pull request testing purposes.
 
 """
 
-
+import pytest
 from src.report2 import allure_hook
 from src.report5 import my_custom_decorator3
 
 __all__ = ["TestReport3"]
 
 
-@my_custom_decorator3(owner="Report3")
+@pytest.mark.xxx
+# @my_custom_decorator3(owner="Report3")
 class TestReport3:
 
     @allure_hook(tag=["Report3"], severity="critical")
