@@ -1,6 +1,7 @@
 import pytest
 import allure
 
+
 def pytest_sessionstart(session):
     session.results = dict()
 
