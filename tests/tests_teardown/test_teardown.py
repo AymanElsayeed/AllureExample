@@ -1,6 +1,7 @@
 import pytest
 import allure
 
+
 @pytest.mark.teardown
 class TestTearDown:
 
