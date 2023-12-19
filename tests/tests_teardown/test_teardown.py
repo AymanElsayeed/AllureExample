@@ -2,6 +2,7 @@ import pytest
 import allure
 
 
+@pytest.mark.xdist_group(name="teardown")
 @pytest.mark.teardown
 class TestTearDown:
 

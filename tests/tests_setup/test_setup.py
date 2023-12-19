@@ -3,6 +3,7 @@ import pytest
 import allure
 
 
+@pytest.mark.xdist_group(name="setup")
 @pytest.mark.setup
 class TestSetUp:
 
