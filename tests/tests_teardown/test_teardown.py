@@ -10,23 +10,6 @@ import pdb
 class TestTearDown:
     class_data = {}
 
-    def setup_method(self, method):
-        """
-        setup method.
-        :return: None
-        """
-        # pdb.set_trace()
-
-        parameters = [i.args[1] for i in method.pytestmark if i.args[0] == "file_name"]
-        if parameters:
-            self.class_data[method.__name__] = parameters[0]
-        else:
-            self.class_data[method.__name__] = [0]
-
-        print(f"setup method {method.__name__}")
-        allure.attach(f"setup method {method.__name__}", name="setup method",
-                      attachment_type=allure.attachment_type.TEXT)
-
     @pytest.mark.parametrize("file_name", [1, 2, 3])
     async def test_teardown_1(self, file_name):
         print(f"test teardown {file_name}")
