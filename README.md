@@ -1,7 +1,11 @@
 # Allure Recport Example using Pytest
 
 # Objective:
-This project is to demonstrate how to generate Allure report using Pytest framework.
+This project is to demonstrate how to generate Allure report using Pytest framework and its capabilities which includes:
+- Attachments
+- Test case description
+- Parameters
+
 
 # How to run the project:
 
