@@ -1,12 +1,13 @@
 import allure
+from shared.allure_wrapper import allure_wrapper
 
 
-# def my_custom_decorator(cls):
+# def static_decorator(cls):
 #     # Define any modifications or additions to the class here
 #     class ModifiedTestClass(cls):
+#         @staticmethod
 #         def setup(self):
 #             # super(ModifiedTestClass, self).setup()
-#             print("Custom setup for the test class")
 #             allure.dynamic.tag("BBB")
 #
 #     return ModifiedTestClass
@@ -43,30 +44,12 @@ import allure
 
 
 def my_custom_decorator3(**params):
-    severity = params.get("severity")
-    owner = params.get("owner")
-    tag = params.get("tag")
-    title = params.get("title")
-    story = params.get("story")
-    feature = params.get("feature")
 
     def decorator(cls):
         class ModifiedTestClass(cls):
             def __call__(self, *args, **kwargs):
                 # wraps = self.func.__wrapped__
-                if owner:
-                    print(f"owner: {owner}")
-                    allure.dynamic.label("owner", owner)
-                if tag:
-                    allure.dynamic.tag(*tag)
-                if severity:
-                    allure.dynamic.severity(severity)
-                if title:
-                    allure.dynamic.title(title)
-                if story:
-                    allure.dynamic.story(story)
-                if feature:
-                    allure.dynamic.feature(feature)
+                allure_wrapper(**params)
                 return self.func(*args, **kwargs)
 
         # return wraps(*args, **kwargs)
@@ -74,15 +57,15 @@ def my_custom_decorator3(**params):
         # pass  # Define any common modifications to the class here
 
         # Iterate over the attributes of the class
-        for name, value in cls.__dict__.items():
-            # Check if the attribute is a callable (method)
-            if callable(value) and name.startswith('test_'):
-                # Apply the decorator to each test method
-                setattr(ModifiedTestClass, name,
-                        apply_decorators(my_custom_method_decorator(**params))(value),
-                        # apply_decorators(decorate_method3(**params))(value)
-                        # decorate_method3(value, **params)
-                        )
+        # for name, value in cls.__dict__.items():
+        #     # Check if the attribute is a callable (method)
+        #     if callable(value) and name.startswith('test_'):
+        #         # Apply the decorator to each test method
+        #         setattr(ModifiedTestClass, name,
+        #                 apply_decorators(my_custom_method_decorator(**params))(value),
+        #                 # apply_decorators(decorate_method3(**params))(value)
+        #                 # decorate_method3(value, **params)
+        #                 )
 
     #     return ModifiedTestClass
     #
