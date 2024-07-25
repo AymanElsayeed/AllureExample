@@ -15,3 +15,5 @@ Execute the following command in the terminal:
  pytest -s -v --alluredir ./reports tests
  allure serve ./reports
 ```
+
+[The Allure Report](https://aymanelsayeed.github.io/AllureExample/)
