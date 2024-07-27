@@ -30,7 +30,7 @@ class TestTearDown:
 
     @pytest.mark.run("last")
     def test_running_time(self):
-        pdb.set_trace()
+        # pdb.set_trace()
         print(f"running time: {self.class_data}")
         assert sum(map(sum, self.class_data.values())) == 45
 

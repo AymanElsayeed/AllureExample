@@ -4,6 +4,7 @@ Tests for the fixtures
 
 """
 import pytest
+import allure
 
 
 class TestFixtures:
@@ -24,6 +25,11 @@ class TestFixtures:
         :param list_of_even_numbers:
         :return: None
         """
+        # add allure description
+        allure.dynamic.description("""This test checks the length of the list of even numbers.
+         (this is allure description)
+        """)
+
         print(f"list_of_even_numbers: {list_of_even_numbers}")
         assert len(list_of_even_numbers) == 4
 
