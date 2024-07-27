@@ -17,3 +17,6 @@ Execute the following command in the terminal:
 ```
 
 <a href="https://aymanelsayeed.github.io/AllureExample/" target="_blank">The Allure Report</a>
+
+
+[The Allure Report](URL"https://aymanelsayeed.github.io/AllureExample/"target="_blank")
