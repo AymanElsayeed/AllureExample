@@ -1,3 +1,9 @@
+"""
+
+This file contains all the hooks and fixtures that are used in the tests.
+
+"""
+
 import pytest
 from pytest_metadata.plugin import metadata_key
 
