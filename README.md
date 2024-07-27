@@ -16,4 +16,4 @@ Execute the following command in the terminal:
  allure serve ./reports
 ```
 
-[The Allure Report](https://aymanelsayeed.github.io/AllureExample/)
+[The Allure Report](https://aymanelsayeed.github.io/AllureExample/){:target="_blank"}
