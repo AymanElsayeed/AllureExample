@@ -78,6 +78,7 @@ class TestSetUp:
         test setup failed
         :return: None
         """
+        allure.dynamic.description("This test should be broken, because i did not use @pytest.mark.")
         assert self.valid is False
 
     @pytest.mark.parametrize("number", [20])
