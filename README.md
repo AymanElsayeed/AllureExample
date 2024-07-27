@@ -5,6 +5,7 @@ This project is to demonstrate how to generate Allure report using Pytest framew
 - Attachments
 - Test case description
 - Parameters
+- Description
 
 
 # How to run the project:
@@ -14,6 +15,13 @@ Execute the following command in the terminal:
 ```bash
  pytest -s -v --alluredir ./reports tests
  allure serve ./reports
+```
+**To Generate Allure Report:**
+
+```bash
+
+allure generate ./reports -o ./docs
+
 ```
 
 <a href="https://aymanelsayeed.github.io/AllureExample/" target="_blank">The Allure Report</a>
