@@ -1,7 +1,14 @@
+"""
+Test teardown methods.
+
+Objective: Demonstrate how to use pytest's teardown
+    - method teardown, this is a method that is called after each test method.
+    - class-method teardown, this is a method that is called after all test methods in a class.
+"""
+
 import asyncio
 import pytest
 import allure
-import pdb
 
 
 @pytest.mark.asyncio
@@ -30,7 +37,6 @@ class TestTearDown:
 
     @pytest.mark.run("last")
     def test_running_time(self):
-        # pdb.set_trace()
         print(f"running time: {self.class_data}")
         assert sum(map(sum, self.class_data.values())) == 45
 
