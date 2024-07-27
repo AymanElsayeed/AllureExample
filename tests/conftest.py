@@ -7,6 +7,7 @@ from _pytest.mark import Mark
 from _pytest.mark.structures import NodeKeywords
 from pytest_metadata.plugin import metadata_key
 
+
 def pytest_sessionstart(session):
     """
     called after the ``Session`` object has been created and before performing collection
@@ -14,6 +15,7 @@ def pytest_sessionstart(session):
     :param _pytest.main.Session session: the pytest session object
     """
     session.collection = {"ayman": "ayman"}
+
 
 @pytest.fixture(scope="session", autouse=True, name="customer")
 def customer_fixture():
@@ -59,7 +61,6 @@ def customer_fixture():
 #     return item
 
 
-
 # conftest.py
 
 def pytest_runtest_protocol(item, nextitem):
@@ -75,7 +76,6 @@ def pytest_runtest_protocol(item, nextitem):
 
     # add mark to skip the test
     # item.add_marker(pytest.mark.skip(reason="skipping test"))
-
 
 
 def pytest_configure(config):
