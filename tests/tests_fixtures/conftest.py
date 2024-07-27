@@ -1,3 +1,9 @@
+"""
+
+This file contains the fixtures that are used in the tests.
+those fixtures are available for test_fixtures package only.
+
+"""
 
 import pytest
 
